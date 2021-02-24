@@ -1,10 +1,37 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from unittest.mock import patch
+from flask import url_for
+from flask_testing import TestCase
+import requests_mock
+from application import app, db
+from application.models import Soap
 
-app = Flask(__name__)
+class TestBase(TestCase):
+    def create_app(self):
+        app.config.update(SQLALCHEMY_DATABASE_URI = "sqlite:///data.db")
+        return app
+    
+    def setUp(self):
+        db.create_all()
+        db.session.add(Soap(mainIngredient = "Honey", oilIngredient = "Avocado oil", benefit = "help lighten skin, and reduce wrinkles."))
+        db.session.commit()
+    
+    def tearDown(self):
+        db.session.remove()
+        db.drop_all()
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 
+class TestGenerator(TestBase):
+    def test_gen(self):
+        response = self.client.get(url_for('gen'))
+        self.assertEqual(response.status_code, 500)
 
-db = SQLAlchemy(app)
-
-from application import routes
+class TestResponse(TestBase):
+    def test_index(self):
+        with requests_mock.mock() as g:
+            g.get("http://localhost:5000/mainIngredient", text = "Honey")
+            g.get("http://localhost:5000/oilIngredient", text = "Avocado oil")
+            g.post("http://localhost:5000/benefit", text = "help lighten skin, and reduce wrinkles.")
+            
+            response = self.client.get(url_for('gen'))
+            self.assertNotIn(b"Honey", response.data)
+            self.assertIn(b"Avocado oil", response.data)
+            self.assertIn(b"help lighten skin, and reduce wrinkles.", response.data)
