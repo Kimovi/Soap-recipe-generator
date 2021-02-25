@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
         <title>Soap recipe generator</title>
     </head>
     <body>
@@ -11,7 +13,6 @@
         <h3>Main ingredient: {{ mainIngredient }}</h3>
         <h3>Oil ingredient: {{ oilIngredient }}</h3>
         <h3>Benefit: {{ benefit }}</h3>
-    <hr></hr>
-    <h2> Today's soap ingredient is {{ mainIngredient }} with {{ oilIngredient }}. </h2>
+        <h2> Today's soap ingredient is {{ mainIngredient }} with {{ oilIngredient }}. </h2>
     </body>
 </html>

@@ -1,0 +1,11 @@
+html {
+    height: 100%;  
+    background-image: linear-gradient(to bottom, rgb(63, 52, 126),rgb(168, 138, 175));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: sans-serif;
+    text-align: center;
+}
+  
