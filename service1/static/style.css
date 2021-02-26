@@ -1,12 +1,18 @@
 html {
     height: 100%;  
-    background-image: linear-gradient(to bottom, rgb(63, 52, 126),rgb(168, 138, 175));
+    background-image: linear-gradient(to bottom, rgb(36, 53, 151),rgb(109, 118, 160));
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin-top: 0;
     margin-bottom: 0;
     font-family: sans-serif;
     text-align: center;
-    color:rgb(222, 228, 233);
+    color : rgb(217, 227, 235);
+    margin: auto;
+}
+
+.main {
+  width: 700px;
+  margin: auto;
 }
   

@@ -7,7 +7,6 @@ from application.models import Soap
 
 class TestBase(TestCase):
     def create_app(self):
-        app.config.update(SQLALCHEMY_DATABASE_URI = "sqlite:///data.db")
         return app
 
     def setUp(self):
@@ -35,4 +34,3 @@ class TestResponse(TestBase):
             self.assertNotIn(b"Honey", response.data)
             self.assertIn(b"Avocado oil", response.data)
             self.assertIn(b"help lighten skin, and reduce wrinkles.", response.data)
-                                                                                                                                                        37,1          Bot
