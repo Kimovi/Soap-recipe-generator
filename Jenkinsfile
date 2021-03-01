@@ -4,7 +4,7 @@ pipeline{
             stage('Testing'){
                 steps{
                     sh '''
-                    cd service-1
+                    cd service1
                     pip3 install -r requirements.txt
                     python3 -m pytest --cov=application
                     cd ..
