@@ -19,15 +19,6 @@ pipeline{
                     '''
                 }
             }
-        stage('Ansible'){
-            steps{
-                sh '''
-                cd ansible
-                ansible-playbook -i inventory.yaml playbook.yaml
-                cd ..
-                '''
-            }
-        }
         stage('Build'){
             steps{
                 sh ''' 
@@ -36,6 +27,15 @@ pipeline{
                 docker-compose build
                 sudo docker login -u kimovi -p password1234
                 sudo docker-compose push
+                '''
+            }
+        }        
+        stage('Ansible'){
+            steps{
+                sh '''
+                cd ansible
+                ansible-playbook -i inventory.yaml playbook.yaml
+                cd ..
                 '''
             }
         }
