@@ -8,7 +8,7 @@ pipeline{
                     pip3 install -r requirements.txt
                     python3 -m pytest --cov=application
                     cd ..
-                    cd service-3
+                    cd service3
                     pip3 install -r requirements.txt
                     python3 -m pytest --cov=application
                     cd ..
