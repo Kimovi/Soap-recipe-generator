@@ -1,16 +1,15 @@
 all:
   children:
-    docker-group:
+    docker:
+      hosts:
+        35.247.92.156
+    manager:
       hosts:
         35.247.62.150
-        35.247.13.112
-    swarm-manager:
-      hosts: 
-        35.247.62.150
-    swarm-worker:
+    worker:
       hosts:
         35.247.13.112
   vars:
     ansible_python_interpreter: /usr/bin/python3
-    ansible_user: borakim
+    ansible_user: stellak14721
     ansible_ssh_private_key_file: '~/.ssh/id_rsa'

@@ -19,6 +19,15 @@ pipeline{
                     '''
                 }
             }
+        stage('Ansible'){
+            steps{
+                sh '''
+                cd ansible
+                ansible-playbook -i inventory.yaml playbook.yaml
+                cd ..
+                '''
+            }
+        }
         stage('Build'){
             steps{
                 sh ''' 
@@ -33,11 +42,12 @@ pipeline{
         stage('Deploy'){
             steps{
                 sh '''
-                    pwd
-                    ls -la
-
-                    '''
+                scp -i ~/.ssh/id_rsa docker-compose.yml borakim@project:/home/jenkins/docker-compose.yml
+                ssh -i ~/.ssh/id_rsa borakim@project 
+                docker stack deploy --compose-file /home/jenkins/docker-compose.yml soap-generator
+                EOF
+                '''
             }
-        }              
+        }          
     }
 }
