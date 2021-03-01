@@ -19,6 +19,25 @@ pipeline{
                     '''
                 }
             }
-            
+        stage('Build'){
+            steps{
+                sh ''' 
+                sudo chmod 666 /var/run/docker.sock
+                docker-compose down --rmi all
+                docker-compose build
+                sudo docker login -u kimovi -p password1234
+                sudo docker-compose push
+                '''
+            }
         }
+        stage('Deploy'){
+            steps{
+                sh '''
+                    pwd
+                    ls -la
+
+                    '''
+            }
+        }              
+    }
 }
