@@ -11,3 +11,9 @@
 - Docker swarm
 - ERD 
 - Risk Assessment
+
+# Asana Board
+# ERD
+# GCP VM instances
+# Docker swarm
+# Continuous Integration Workflow
