@@ -11,5 +11,5 @@ all:
         35.247.13.112
   vars:
     ansible_python_interpreter: /usr/bin/python3
-    ansible_user: stellak14721
+    ansible_user: borakim
     ansible_ssh_private_key_file: '~/.ssh/id_rsa'
