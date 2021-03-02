@@ -23,9 +23,9 @@ I have build 3 APIs with Python, then rendered the frontend with Python, Flask, 
 - Risk Assessment
 
 
-Frontend page is handling API calls in between all 3 backend services and also store the generated data to MySQL DB. I have set up Nginx instance for users to access application through reverse proxy.
 <img width="689" alt="Frontend" src="https://user-images.githubusercontent.com/59723479/109579641-30d67480-7af1-11eb-9db3-39978d8f9130.png">
 
+The frontend page is handling API calls in between all 3 backend services and also stores the generated data to MySQL DB. I've set up Docker swarm manager, worker and Nginx instance for load balancer where user can access the application through the reverse proxy.
 
 # Trello board
 This project required lots of tools and work. I was swamped with the amount of the stuff I had to manage and came up with a Trello board to organize the tasks. 
@@ -44,30 +44,42 @@ I have used GCP SQL manager this time rather than setting one on my own on a VM 
 I have used 4 instances for this project, 'project' instance for Docker swarm manager node, 'swarm-worker' for swarm worker node, 'nginx' for load balancer instance and 'jenkins' for CI server pipeline and Ansible. 
 <img width="875" alt="GCP instance" src="https://user-images.githubusercontent.com/59723479/109577025-cb808480-7aec-11eb-94a4-e6fa24270b49.png">
 
-# Docker swarm
-Without using Ansible, I had tested Swarm manager node and Swarm worker node to ensure they are up and running. 
-
 # Unit testing
 After building up the APIs and connect my application to the SQL database, I ran the unit test with Pytest as my code was written in Python. The purpose of the test was to ensure API applications are working without an error.
+
 <img width="899" alt="Pytest_service1" src="https://user-images.githubusercontent.com/59723479/109577031-cc191b00-7aec-11eb-86ca-63f2d8f6049e.png">
 <img width="748" alt="Pytest_service2" src="https://user-images.githubusercontent.com/59723479/109577033-ccb1b180-7aec-11eb-8f15-b6c3c70bbb9d.png">
 <img width="748" alt="Pytest_service3" src="https://user-images.githubusercontent.com/59723479/109577035-cd4a4800-7aec-11eb-976b-a5ae185c826c.png">
 <img width="748" alt="Pytest_service4" src="https://user-images.githubusercontent.com/59723479/109577036-cd4a4800-7aec-11eb-9222-7d98ea6e2811.png">
 
-3 out of 4 applications had 100% of the pass result, however, Service1 (frontend) hadn't passed the test as it had a DB connection issue which is one of the ongoing issues. 
+3 out of 4 applications had 100% of the pass result, however, Service1 (frontend) hadn't passed the test as it had a DB connection issue which is one of the ongoing issues.
 
-For service2 & service3, I have tested APIs are giving the correct data listed. and for service4, I have tested whether it was giving the correct data depending on service2's outcome. I have tested several times to ensure all 3 services for the test consistency.
+For service2 & service3, I have tested APIs are giving the correct data listed. and for service4, I have tested whether it was giving the corresponding data depending on service2's outcome. I have tested several times to ensure all 3 services for the test consistency.
 
 # Load balancer
+For load balancer, I have set an instance with Nginx configuration. Any users accessing the web page will reach this server first, and Nginx will split the traffic and distribute it to either Swarm manager or Swarm worker. 
+
+<img width="443" alt="Nginx" src="https://user-images.githubusercontent.com/59723479/109619643-f096e680-7b30-11eb-9b06-9ee7d15af8ed.png">
+
 # Ansible
-Ok, Let's talk about Ansible which I struggled the most whilst working on this project. and yet, This is still an ongoing project for me to fix Ansible. 
+Ok, Let's talk about Ansible which I struggled the most whilst working on this project. and yet, This is still an ongoing process for me to fix Ansible. 
+
+<img width="1146" alt="Ansible" src="https://user-images.githubusercontent.com/59723479/109619634-ed9bf600-7b30-11eb-8b80-d23d0941e4fa.png">
+
+I wanted to use Ansible to join Swarm manager - Swarm worker nodes and it has worked on 'jenkins' instance. 
+However, this wouldn't work in collaboration with Jenkins pipeline. 
+
+<img width="885" alt="Ansible error on jenkins" src="https://user-images.githubusercontent.com/59723479/109619644-f096e680-7b30-11eb-8885-aa90dd7bf3a0.png">
+
 
 
 # Jenkins pipeline 
+My plan was to build Jenkins pipeline to test, build, set ansible to join swarm nodes and deploy. As I'm having an error on 'ansible' stage, this pipeline would not work for now. 
 <img width="915" alt="Jenkins_outcome" src="https://user-images.githubusercontent.com/59723479/109577027-cc191b00-7aec-11eb-8f68-d391c0a89e9d.png">
 
 # Continuous Integration Workflow
 <img width="689" alt="Workflow" src="https://user-images.githubusercontent.com/59723479/109581503-4dc07700-7af4-11eb-97fb-9cc06a85f770.png">
+
 
 # Risk assessment
 
