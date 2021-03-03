@@ -30,20 +30,9 @@ pipeline{
                 '''
             }
         }        
-        stage('Ansible'){
-            steps{
-                sh '''
-                cd ansible
-                ansible-playbook -i inventory.yaml playbook.yaml
-                cd ..
-                '''
-            }
-        }
         stage('Deploy'){
             steps{
                 sh '''
-                scp -i ~/.ssh/id_rsa docker-compose.yml borakim@project:/home/jenkins/docker-compose.yml
-                ssh -i ~/.ssh/id_rsa borakim@project 
                 docker stack deploy --compose-file /home/jenkins/docker-compose.yml soap-generator
                 EOF
                 '''
