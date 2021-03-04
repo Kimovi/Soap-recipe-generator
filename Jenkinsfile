@@ -33,7 +33,7 @@ pipeline{
         stage('Deploy'){
             steps{
                 sh '''
-                docker stack deploy --compose-file /home/jenkins/docker-compose.yml soap-generator
+                docker stack deploy --compose-file /home/jenkins/docker-compose.yaml soap-generator
                 EOF
                 '''
             }
