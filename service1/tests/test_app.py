@@ -27,7 +27,7 @@ class TestResponse(TestBase):
     def test_index(self):
         with requests_mock.mock() as g:
             g.get("http://service2/mainIngredient", text = "Honey")
-            g.get("http://service3:5002/oilIngredient", text = "Avocado oil")
+            g.get("http://service3/oilIngredient", text = "Avocado oil")
             g.post("http://service4/benefit", text = "help lighten skin, and reduce wrinkles.")
 
             response = self.client.get(url_for('gen'))

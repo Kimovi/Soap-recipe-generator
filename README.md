@@ -62,15 +62,9 @@ For load balancer, I have set an instance with Nginx configuration. Any users ac
 <img width="443" alt="Nginx" src="https://user-images.githubusercontent.com/59723479/109619643-f096e680-7b30-11eb-9b06-9ee7d15af8ed.png">
 
 # Ansible
-Ok, Let's talk about Ansible which I struggled the most whilst working on this project. and yet, This is still an ongoing process for me to fix Ansible. 
+Ansible was used for this project to join Swarm manager and Swarm worker. 
 
 <img width="1146" alt="Ansible" src="https://user-images.githubusercontent.com/59723479/109619634-ed9bf600-7b30-11eb-8b80-d23d0941e4fa.png">
-
-I wanted to use Ansible to join Swarm manager - Swarm worker nodes and it has worked on 'jenkins' instance. 
-However, this wouldn't work in collaboration with Jenkins pipeline. 
-
-<img width="885" alt="Ansible error on jenkins" src="https://user-images.githubusercontent.com/59723479/109619644-f096e680-7b30-11eb-8885-aa90dd7bf3a0.png">
-
 
 
 # Jenkins pipeline 
