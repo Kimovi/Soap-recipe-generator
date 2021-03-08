@@ -4,5 +4,5 @@
       docker_swarm:
         state: join
         advertise_addr: worker
-        join_token: "{{ hostvars['35.247.62.150']['swarm_info']['swarm_facts']['JoinTokens']['Worker'] }}"
+        join_token: "{{ hostvars['35.230.124.111']['swarm_info']['swarm_facts']['JoinTokens']['Worker'] }}"
         remote_addrs: [ 'project' ]

@@ -2,13 +2,13 @@ all:
   children:
     docker:
       hosts:
-        35.247.92.156
+        34.82.53.173
     manager:
       hosts:
-        35.247.62.150
+        35.230.124.111
     worker:
       hosts:
-        35.247.13.112
+        35.230.126.247
   vars:
     ansible_python_interpreter: /usr/bin/python3
     ansible_user: borakim
