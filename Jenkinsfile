@@ -42,8 +42,8 @@ pipeline{
         stage('Deploy'){
             steps{
                 sh '''
-                scp -i ~/.ssh/id_rsa docker-compose.yaml jenkins@project:/home/jenkins/docker-compose.yaml
-                ssh -i ~/.ssh/id_rsa jenkins@project << EOF
+                scp -i ~/.ssh/id_rsa docker-compose.yaml jenkins@35.230.124.111:/home/jenkins/docker-compose.yaml
+                ssh -i ~/.ssh/id_rsa jenkins@35.230.124.111 << EOF
                 docker stack deploy --compose-file /home/jenkins/docker-compose.yaml soap-generator
                 EOF
                 '''
