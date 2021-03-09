@@ -2,14 +2,14 @@ all:
   children:
     docker:
       hosts:
-        34.82.53.173
+        34.82.53.173:
     manager:
       hosts:
-        35.230.124.111
+        35.230.124.111:
     worker:
       hosts:
-        35.230.126.247
+        35.230.126.247:
   vars:
     ansible_python_interpreter: /usr/bin/python3
-    ansible_user: borakim
+    ansible_user: jenkins
     ansible_ssh_private_key_file: '~/.ssh/id_rsa'
