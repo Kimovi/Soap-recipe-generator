@@ -75,12 +75,14 @@ There is 4 stage on Jenkins Pipeline to test, set Ansible, build and deploy.
 On the Test stage, Jenkins will test 3 backend applications and when it passes, it will set trigger Ansible. Ansible will join the Swarm manager instance and Swarm worker instance. Build stage was added to simply build docker images and push them to Dockerhub as Docker Swarm will only work when images are pre-build and on Dockerhub. 
 For the last, It's now ready to deploy the application. Firstly it will copy the docker-compose.yaml file to the Swarm manager instance and SSH into the manager node. then it will stack deploy the application meaning it's now up and running on both Swarm manager and Swarm worker node. 
 
-# Webhook test 
-
 <img width="1280" alt="Jenkins_outcome" src="https://user-images.githubusercontent.com/59723479/110504537-2a4d8b80-80f5-11eb-9389-c628c58af2f0.png">
 
 
 # Continuous Integration Workflow
+In this project, I have automated Test - Build - Deploy using Ansible, Docker, Jenkins. 
+I usually work on the code on VScode on my local machine. Each time code is pushed to my GitHub, webhook will trigger the build on the Jenkins CI server. 
+Once the build is triggered, it will automatically test the code, Join Swarm manager and Swarm worker using Ansible, build Docker images and push them to Dockerhub, and will stack deploy it. 
+
 <img width="689" alt="Workflow" src="https://user-images.githubusercontent.com/59723479/109581503-4dc07700-7af4-11eb-97fb-9cc06a85f770.png">
 
 
@@ -94,10 +96,8 @@ For the last, It's now ready to deploy the application. Firstly it will copy the
 |GCP instance failure|In case of instance failure, the entire application wouldn't work as SQL and Jenkins are running on the instance|High|Create a backup instance|
 
 # Future improvements
-- Webhook
 - Implement environment variables 
 - Unit testing
-- MySQL DB
 
 # Contributor
 Bora Kim
