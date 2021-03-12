@@ -2,13 +2,13 @@ all:
   children:
     docker:
       hosts:
-        34.82.53.173:
+        10.138.0.10:
     manager:
       hosts:
-        35.230.124.111:
+        10.138.0.7:
     worker:
       hosts:
-        35.230.126.247:
+        10.138.0.8:
   vars:
     ansible_python_interpreter: /usr/bin/python3
     ansible_user: jenkins

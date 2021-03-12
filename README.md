@@ -42,7 +42,7 @@ I have used GCP SQL manager this time rather than setting one on my own on a VM 
 
 # GCP VM instances
 I have used 4 instances for this project, 'project' instance for Docker swarm manager node, 'swarm-worker' for swarm worker node, 'nginx' for load balancer instance and 'jenkins' for CI server pipeline and Ansible. 
-<img width="737" alt="GCP instance" src="https://user-images.githubusercontent.com/59723479/110504534-29b4f500-80f5-11eb-9e88-3fc7a3e8879c.png">
+<img width="575" alt="GCP instance" src="https://user-images.githubusercontent.com/59723479/110994176-50cb2b00-8370-11eb-9eb5-56a4da7168eb.png">
 
 # Unit testing
 After building up the APIs and connect my application to the SQL database, I ran the unit test with Pytest as my code was written in Python. The purpose of the test was to ensure API applications are working without an error.
